@@ -21,18 +21,16 @@ $ bundle install
 Enter the following psql commands below:
 
 ```
-# CREATE DATABASE library;
-# CREATE DATABASE library_test;
-# CREATE DATABASE development;
-# \c library;
-# CREATE TABLE authors (id serial PRIMARY KEY, first_name varchar, last_name varchar);
-# CREATE TABLE checkouts (id serial PRIMARY KEY, patron_id  int, due_date varchar, return varchar, checkout_date varchar);
-# CREATE TABLE books (id serial primary key, title varchar);
-# CREATE TABLE patron (id serial primary key, name varchar);
-# CREATE DATABASE library_test WITH TEMPLATE library;
-# CREATE DATABASE library_development with template library_test
-# CREATE TABLE authors_books (id serial PRIMARY KEY, author_id, book_id);
-# CREATE TABLE books_checkout (id serial PRIMARY KEY, checkout_it, book_id);
+CREATE DATABASE library;
+\c library;
+CREATE TABLE authors (id serial PRIMARY KEY, first_name varchar, last_name varchar);
+CREATE TABLE checkouts (id serial PRIMARY KEY, patron_id  int, due_date varchar, return varchar, checkout_date varchar);
+CREATE TABLE books (id serial primary key, title varchar);
+CREATE TABLE patrons (id serial primary key, name varchar);
+CREATE TABLE authors_books (id serial PRIMARY KEY, author_id int, book_id int);
+CREATE TABLE books_checkout (id serial PRIMARY KEY, checkout_it int, book_id int);
+CREATE DATABASE library_test WITH TEMPLATE library;
+CREATE DATABASE library_development WITH TEMPLATE library_test;
 ```
 
 ## Known Bugs
